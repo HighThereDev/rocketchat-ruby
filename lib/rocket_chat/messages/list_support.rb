@@ -22,6 +22,26 @@ module RocketChat
 
         body
       end
+
+      def build_list_joined_body(room_id, offset, count, sort, unreads)
+        body = {}
+
+        body[:roomId] = room_id
+        body[:offset] = offset.to_i if offset.is_a? Integer
+        body[:count] = count.to_i if count.is_a? Integer
+        body[:unreads] = unreads if unreads.is_a?(TrueClass) || unreads.is_a?(FalseClass)
+
+        [[:sort, sort]].each do |field, val|
+          case val
+          when Hash
+            body[field] = val.to_json
+          when String
+            body[field] = val
+          end
+        end
+
+        body
+      end
     end
   end
 end
