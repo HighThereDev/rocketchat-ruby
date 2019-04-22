@@ -42,6 +42,13 @@ module RocketChat
 
         body
       end
+
+      def build_custom_field_body(room_id, name, custom_fields)
+        body = room_params(room_id, name)
+        body[:customFields] = custom_fields
+
+        body
+      end
     end
   end
 end

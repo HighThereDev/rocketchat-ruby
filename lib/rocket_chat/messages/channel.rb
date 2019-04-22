@@ -108,6 +108,22 @@ module RocketChat
         )['success']
       end
 
+      #
+      # channels.setCustomFields REST API
+      # @param [String] room_id Rocket.Chat room id
+      # @param [String] name Rocket.Chat room name
+      # @param [Hash] name Rocket.Chat custom fields
+      # @return [Boolean]
+      # @raise [HTTPError, StatusError]
+      #
+      def set_custom_fields(room_id: nil, name: nil, custom_fields:)
+        session.request_json(
+            '/api/v1/channels.setCustomFields',
+            method: :post,
+            body: build_custom_field_body(room_id, name, custom_fields)
+        )['success']
+      end
+
       # Keys for set_attr:
       # * [String] description A room's description
       # * [String] join_code Code to join a channel
