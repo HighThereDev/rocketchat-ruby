@@ -169,3 +169,16 @@ session = rocket_server.login('username', 'password')
 session.channels.online(name: 'some_channel_name')
 
 ```
+
+### channels.setCustomFields
+
+This method set the customField in a channel.
+
+```ruby
+require 'rocketchat'
+
+rocket_server = RocketChat::Server.new('http://your.server.address/')
+session = rocket_server.login('username', 'password')
+session.channels.set_custom_fields(name: 'some_channel_name', custom_fields: {'foo': 'bar'})
+```
+_name or room_id can be used to set in a channel_
