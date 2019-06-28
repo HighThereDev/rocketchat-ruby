@@ -25,6 +25,21 @@ module RocketChat
         RocketChat::Subscription.new response if response['success']
       end
 
+      #
+      # subscriptions.read REST API
+      # @param [String] rid
+      # @return [RocketChat::Subscription]
+      # @raise [HTTPError, StatusError]
+      #
+      def read(rid:)
+        response = session.request_json(
+            '/api/v1/subscriptions.read',
+            method: :post,
+            body: { rid: rid }
+        )
+        RocketChat::Subscription.new response if response['success']
+      end
+
       private
 
       attr_reader :session
