@@ -124,6 +124,20 @@ module RocketChat
         )['success']
       end
 
+      #
+      # channels.archive REST API
+      # @param [String] room_id Rocket.Chat room id
+      # @return [Boolean]
+      # @raise [HTTPError, StatusError]
+      #
+      def archive(room_id:)
+        session.request_json(
+            '/api/v1/channels.archive',
+            method: :post,
+            body: room_params(room_id, nil)
+        )['success']
+      end
+
       # Keys for set_attr:
       # * [String] description A room's description
       # * [String] join_code Code to join a channel
