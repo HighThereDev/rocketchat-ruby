@@ -63,7 +63,7 @@ module RocketChat
           method: :post,
           body: room_params(room_id, name)
             .merge(channel: channel)
-            .merge(Util.slice_hash(params, :text, :alias, :emoji, :avatar, :attachments, :customFields, :tid))
+            .merge(Util.slice_hash(params, :text, :alias, :emoji, :avatar, :attachments, :customFields, :tmid))
         )
         RocketChat::Message.new response['message'] if response['success']
       end
