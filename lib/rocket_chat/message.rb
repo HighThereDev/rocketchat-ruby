@@ -58,6 +58,11 @@ module RocketChat
       data['groupable']
     end
 
+    # Parent
+    def parent
+      data['parent'] || nil
+    end
+
     def inspect
       format(
         '#<%<class_name>s:0x%<object_id>p @id="%<id>s" @room="%<room_id>s" @msg="%<message>s">',
@@ -65,7 +70,8 @@ module RocketChat
         object_id: object_id,
         id: id,
         room_id: room_id,
-        message: message
+        message: message,
+        parent: parent
       )
     end
   end
